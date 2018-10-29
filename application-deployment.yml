@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: application-deploy
+  labels:
+    app: user-login-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: user-input-pod
+      app: user-login-app
+  template:
+    metadata:
+      name: user-input
+      labels:
+        name: user-input-pod
+        app: user-login-app
+    spec:
+      containers:
+      - name: demo-app
+        image: adarsha/kub_demo_app:3.0
+        ports:
+        - containerPort: 8080

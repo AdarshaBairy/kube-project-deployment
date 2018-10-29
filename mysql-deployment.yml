@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-deploy
+  labels:
+    app: user-login-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: mysqldb-pod
+      app: user-login-app
+  template:
+    metadata:
+      name: mysqldb
+      labels:
+        name: mysqldb-pod
+        app: user-login-app
+    spec:
+      containers:
+      - name: mysql
+        image: adarsha/kub_demo_mysqldb:3.0
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          value: root
+        ports:
+        - containerPort: 3306
