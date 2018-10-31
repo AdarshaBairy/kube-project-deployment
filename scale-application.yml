@@ -5,8 +5,8 @@ metadata:
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
-	  kind: Deployment
-	  name: application-deploy
+    kind: Deployment
+    name: application-deploy
   minReplicas: 3
   maxReplicas: 6
   targetCPUUtilizationPercentage: 50
